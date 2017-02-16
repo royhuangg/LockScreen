@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">鎖定螢幕</string>
+    <string name="text_active_admin">請點擊"啟用"按鈕取得權限</string>
+    <string name="btn_active">啟用</string>
+    <string name="text_lock">鎖定</string>
+</resources>

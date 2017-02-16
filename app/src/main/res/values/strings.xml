@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">LockScreen</string>
+    <string name="text_active_admin">Please click "Active" Button to active admin permission.</string>
+    <string name="btn_active">Active</string>
+    <string name="text_lock">Lock</string>
+</resources>
