@@ -4,4 +4,6 @@
     <string name="text_active_admin">請點擊"啟用"按鈕取得權限</string>
     <string name="btn_active">啟用</string>
     <string name="text_lock">鎖定</string>
+    <string name="btn_shortcut">顯示於桌面</string>
+    <string name="alert_create_shortcut">已建立在桌面上</string>
 </resources>

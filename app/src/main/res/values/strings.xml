@@ -3,4 +3,6 @@
     <string name="text_active_admin">Please click "Active" Button to active admin permission.</string>
     <string name="btn_active">Active</string>
     <string name="text_lock">Lock</string>
+    <string name="btn_shortcut">Add Shortcut</string>
+    <string name="alert_create_shortcut">Shortcut was created.</string>
 </resources>
