@@ -1,4 +1,4 @@
-package com.roy.lockscreen;
+package com.roy.lockscreen.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -6,6 +6,9 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
+
+import com.roy.lockscreen.R;
+import com.roy.lockscreen.activity.LockScreenActivity;
 
 /**
  * Created by Roy on 2017/2/16.

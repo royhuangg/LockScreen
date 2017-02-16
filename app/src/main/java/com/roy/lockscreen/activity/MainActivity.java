@@ -1,4 +1,4 @@
-package com.roy.lockscreen;
+package com.roy.lockscreen.activity;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.roy.lockscreen.receiver.AdminReceiver;
+import com.roy.lockscreen.Config;
+import com.roy.lockscreen.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

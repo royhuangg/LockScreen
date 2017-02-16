@@ -1,4 +1,4 @@
-package com.roy.lockscreen;
+package com.roy.lockscreen.activity;
 
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
@@ -7,6 +7,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
+
+import com.roy.lockscreen.receiver.AdminReceiver;
+import com.roy.lockscreen.Config;
 
 /**
  * Created by Roy on 2017/2/16.

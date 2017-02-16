@@ -1,4 +1,4 @@
-package com.roy.lockscreen;
+package com.roy.lockscreen.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;

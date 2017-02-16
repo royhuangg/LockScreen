@@ -1,8 +1,10 @@
-package com.roy.lockscreen;
+package com.roy.lockscreen.receiver;
 
 import android.app.admin.DeviceAdminReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.roy.lockscreen.Config;
 
 /**
  * Created by Roy on 2017/2/16.
