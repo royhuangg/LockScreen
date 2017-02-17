@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.roy.lockscreen.receiver.AdminReceiver;
 import com.roy.lockscreen.Config;
 import com.roy.lockscreen.R;
+import com.roy.lockscreen.receiver.AdminReceiver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +21,12 @@ public class MainActivity extends BaseActivity {
     //<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     private static final int REQUEST_ACTIVE = 0001;
     private DevicePolicyManager devicePolicyManager;
-    ComponentName componentName;
+    private ComponentName componentName;
+
+    @BindView(R.id.btn_shortcut)
+    Button btnShortcut;
+    @BindView(R.id.layout_main)
+    RelativeLayout layoutMain;
     @BindView(R.id.tv_tip)
     TextView tvTip;
     @BindView(R.id.btn_active)
@@ -44,7 +49,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void checkHasAdminActive() {
-        layoutActive.setVisibility(devicePolicyManager.isAdminActive(componentName) ? View.GONE : View.VISIBLE);
+        boolean isAdminActive = devicePolicyManager.isAdminActive(componentName);
+        layoutActive.setVisibility(isAdminActive ? View.GONE : View.VISIBLE);
+        layoutMain.setVisibility(!isAdminActive ? View.GONE : View.VISIBLE);
+    }
+
+    public void customShortcut(View view) {
+        startActivity(new Intent(this, ShortcutActivity.class));
     }
 
     public void addShortCut(View view) {
@@ -58,11 +69,12 @@ public class MainActivity extends BaseActivity {
         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
                 Intent.ShortcutIconResource.fromContext(
                         getApplicationContext(),// 捷徑app圖
-                        R.drawable.ic_lock_outline_red_a400_24dp));
+                        R.drawable.ic_lock_outline_pink_a400_48dp));
         addIntent.putExtra("duplicate", false); // 只創建一次
         addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT"); // 安裝
         getApplicationContext().sendBroadcast(addIntent); // 送出廣播
         toast(getString(R.string.alert_create_shortcut));
+
     }
 
 
@@ -92,9 +104,5 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        System.gc();
-        super.onDestroy();
-    }
+
 }

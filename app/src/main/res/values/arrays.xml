@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="icons">
+        <item>@mipmap/ic_launcher</item>
+        <item>@drawable/ic_lock_red_a400_48dp</item>
+        <item>@drawable/ic_lock_outline_lime_300_48dp</item>
+        <item>@drawable/ic_lock_outline_pink_a400_48dp</item>
+        <item>@drawable/ic_pets_brown_600_48dp</item>
+        <item>@drawable/exit</item>
+        <item>@drawable/stop</item>
+    </integer-array>
+
+</resources>

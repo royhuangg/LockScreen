@@ -6,4 +6,10 @@
     <string name="text_lock">鎖定</string>
     <string name="btn_shortcut">顯示於桌面</string>
     <string name="alert_create_shortcut">已建立在桌面上</string>
+    <string name="confirm">確認</string>
+    <string name="btn_take_photo">拍照</string>
+    <string name="btn_pick_photo">從相簿中選擇</string>
+    <string name="text_select_icon">請選擇欲建立桌面圖示，亦可拍照或從相簿選擇：</string>
+    <string name="text_shortcut_preview">捷徑預覽：</string>
+    <string name="text_shortcut_text">捷徑文字：</string>
 </resources>

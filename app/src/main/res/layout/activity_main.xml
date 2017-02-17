@@ -5,34 +5,40 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.roy.lockscreen.activity.MainActivity">
 
 
     <RelativeLayout
+        android:id="@+id/layout_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
+
 
         <Button
             android:id="@+id/btn_shortcut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:onClick="addShortCut"
             android:text="@string/btn_shortcut"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_shortcut"
+            android:onClick="customShortcut"
+            android:text="Custom Shortcut"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/layout_active"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:padding="10dp"
+        android:visibility="visible"
         >
 
         <TextView

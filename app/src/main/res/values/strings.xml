@@ -5,4 +5,10 @@
     <string name="text_lock">Lock</string>
     <string name="btn_shortcut">Add Shortcut</string>
     <string name="alert_create_shortcut">Shortcut was created.</string>
+    <string name="text_shortcut_text">Shortcut Text：</string>
+    <string name="text_shortcut_preview">Shortcut Preview：</string>
+    <string name="btn_take_photo">Take photo</string>
+    <string name="btn_pick_photo">Pick photo from gallery</string>
+    <string name="text_select_icon">Please choose shortcut Icon,also can take new photo or pick from gallery</string>
+    <string name="confirm">Confirm</string>
 </resources>

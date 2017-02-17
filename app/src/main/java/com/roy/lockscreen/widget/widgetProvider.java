@@ -30,7 +30,7 @@ public class widgetProvider extends AppWidgetProvider {
                 0, intent, 0);
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                 R.layout.widget_lock);
-        remoteViews.setOnClickPendingIntent(R.id.image_widget, pendingIntent);
+        remoteViews.setOnClickPendingIntent(R.id.image_icon, pendingIntent);
         appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
 
         super.onUpdate(context, appWidgetManager, appWidgetIds);
