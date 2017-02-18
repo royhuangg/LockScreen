@@ -105,4 +105,8 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    public void startVoiceRecognition(View view) {
+        startActivity(new Intent(this, VoiceRecognitionDemoActivity.class));
+    }
+
 }

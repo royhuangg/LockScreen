@@ -11,4 +11,6 @@
     <string name="btn_pick_photo">Pick photo from gallery</string>
     <string name="text_select_icon">Please choose shortcut Icon,also can take new photo or pick from gallery</string>
     <string name="confirm">Confirm</string>
+    <string name="text_create_shortcut">Create Shortcut</string>
+    <string name="service_name">VoiceRecognitionService</string>
 </resources>

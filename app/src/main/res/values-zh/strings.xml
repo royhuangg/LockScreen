@@ -12,4 +12,5 @@
     <string name="text_select_icon">請選擇欲建立桌面圖示，亦可拍照或從相簿選擇：</string>
     <string name="text_shortcut_preview">捷徑預覽：</string>
     <string name="text_shortcut_text">捷徑文字：</string>
+    <string name="text_create_shortcut">建立捷徑於桌面</string>
 </resources>
