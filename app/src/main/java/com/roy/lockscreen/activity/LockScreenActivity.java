@@ -4,38 +4,40 @@ import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.widget.Toast;
 
+import com.roy.lockscreen.R;
 import com.roy.lockscreen.receiver.AdminReceiver;
 import com.roy.lockscreen.Config;
+import com.roy.lockscreen.util.DevicePolicyUtil;
 
 /**
  * Created by Roy on 2017/2/16.
  */
 
 public class LockScreenActivity extends Activity {
-    private DevicePolicyManager devicePolicyManager;
-    private ComponentName componentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        componentName = new ComponentName(this, AdminReceiver.class);
         lockScreen();
     }
 
     private void lockScreen() {
-        if (devicePolicyManager.isAdminActive(componentName)) {
+        if (DevicePolicyUtil.getInstance(this).isAdminActive()) {
             if (isScreenOn()) {
-                devicePolicyManager.lockNow();
+                DevicePolicyUtil.getInstance(this).lockNow();
             }
-            finish();
         } else {
             Config.loge("需要先取的Admin權限");
+            Toast.makeText(this, getString(R.string.toast_get_admin), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MainActivity.class));
         }
+        finish();
     }
 
     private boolean isScreenOn() {
@@ -45,5 +47,11 @@ public class LockScreenActivity extends Activity {
         } else {
             return pm.isScreenOn();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        System.gc();
+        super.onDestroy();
     }
 }

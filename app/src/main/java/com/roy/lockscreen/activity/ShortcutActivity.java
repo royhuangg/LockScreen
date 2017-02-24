@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import com.roy.lockscreen.R;
 import com.roy.lockscreen.util.BitmapUtil;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -150,15 +152,26 @@ public class ShortcutActivity extends BaseActivity {
             switch (requestCode) {
                 case SELECT_PHOTO:
                     Uri selectedImage = imageReturnedIntent.getData();
-                    currentSelectedPic = BitmapUtil.getBitmapFromUri(this, selectedImage);
-                    ivIcon.setImageURI(selectedImage);
+//                    currentSelectedPic = BitmapUtil.getBitmapFromUri(this, selectedImage);
+//                    ivIcon.setImageURI(selectedImage);
+                    CropImage.activity(selectedImage).setGuidelines(CropImageView.Guidelines.ON).start(this);
                     break;
                 case TAKE_PHOTO:
-//                    String filePath = outputFileUri.getPath();
-                    currentSelectedPic = BitmapUtil.getBitmapFromUri(this, outputFileUri);
-                    ivIcon.setImageURI(outputFileUri);
+//                    currentSelectedPic = BitmapUtil.getBitmapFromUri(this, outputFileUri);
+//                    ivIcon.setImageURI(outputFileUri);
+                    CropImage.activity(outputFileUri).setGuidelines(CropImageView.Guidelines.ON).start(this);
                     break;
+                case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
+                    CropImage.ActivityResult result = CropImage.getActivityResult(imageReturnedIntent);
+                    Uri resultUri = result.getUri();
+                    currentSelectedPic = BitmapUtil.getBitmapFromUri(this, resultUri);
+                    ivIcon.setImageURI(resultUri);
+                    break;
+
             }
+        } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(imageReturnedIntent);
+            Exception error = result.getError();
         }
     }
 

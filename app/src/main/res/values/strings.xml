@@ -13,4 +13,8 @@
     <string name="confirm">Confirm</string>
     <string name="text_create_shortcut">Create Shortcut</string>
     <string name="service_name">VoiceRecognitionService</string>
+    <string name="cancel">Cancel</string>
+    <string name="toast_get_admin">Please Active Admin by click "Active" button.</string>
+    <string name="text_uninstall">uninstall app</string>
+    <string name="alert_uninstall">"Are you sure uninstall "</string>
 </resources>

@@ -3,26 +3,28 @@ package com.roy.lockscreen.activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.roy.lockscreen.BuildConfig;
 import com.roy.lockscreen.Config;
 import com.roy.lockscreen.R;
 import com.roy.lockscreen.receiver.AdminReceiver;
+import com.roy.lockscreen.util.DevicePolicyUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements DevicePolicyUtil.DevicePolicyListener {
     //<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     private static final int REQUEST_ACTIVE = 0001;
-    private DevicePolicyManager devicePolicyManager;
-    private ComponentName componentName;
-
     @BindView(R.id.btn_shortcut)
     Button btnShortcut;
     @BindView(R.id.layout_main)
@@ -42,14 +44,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        componentName = new ComponentName(MainActivity.this, AdminReceiver.class);
+        DevicePolicyUtil.getInstance(this).setDevicePolicyListener(this);
 
         checkHasAdminActive();
     }
 
     private void checkHasAdminActive() {
-        boolean isAdminActive = devicePolicyManager.isAdminActive(componentName);
+        boolean isAdminActive = DevicePolicyUtil.getInstance(this).isAdminActive();
         layoutActive.setVisibility(isAdminActive ? View.GONE : View.VISIBLE);
         layoutMain.setVisibility(!isAdminActive ? View.GONE : View.VISIBLE);
     }
@@ -77,19 +78,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
-    private void activtAdmin() {
-        Intent intent = new Intent(
-                DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,
-                componentName);
-        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                "LockScreen");
-        startActivityForResult(intent, REQUEST_ACTIVE);
-    }
-
     public void activtAdmin(View view) {
-        activtAdmin();
+        DevicePolicyUtil.getInstance(this).activtAdmin(this, REQUEST_ACTIVE);
     }
 
     @Override
@@ -109,4 +99,37 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, VoiceRecognitionDemoActivity.class));
     }
 
+    public void uninstall(View view) {
+        new AlertDialog.Builder(this).setMessage(getString(R.string.alert_uninstall)+ getString(R.string.app_name) + " ?").setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DevicePolicyUtil.getInstance(MainActivity.this).removeActiveAdmin();
+
+            }
+        }).setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        }).create().show();
+    }
+
+    @Override
+    public void onActiveAdmin() {
+        checkHasAdminActive();
+    }
+
+    @Override
+    public void onRemovedActiveAdmin() {
+        layoutActive.setVisibility(View.VISIBLE);
+        layoutMain.setVisibility(View.GONE);
+        deleteApp();
+    }
+
+    private void deleteApp() {
+        Intent intent = new Intent(Intent.ACTION_DELETE);
+        intent.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+        startActivity(intent);
+        finish();
+    }
 }

@@ -24,21 +24,29 @@
             android:text="@string/btn_shortcut"/>
 
         <Button
+            android:id="@+id/btn_custom_shortcut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_shortcut"
             android:onClick="customShortcut"
             android:text="@string/text_create_shortcut"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_custom_shortcut"
+            android:onClick="uninstall"
+            android:text="@string/text_uninstall"/>
+
 
         <!--暫時不研究語音-->
         <Button
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_shortcut"
             android:onClick="startVoiceRecognition"
-            android:text="go To VoiceRecognitionDemoActivity"/>
+            android:text="go To VoiceRecognitionDemoActivity"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

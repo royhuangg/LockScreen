@@ -13,4 +13,9 @@
     <string name="text_shortcut_preview">捷徑預覽：</string>
     <string name="text_shortcut_text">捷徑文字：</string>
     <string name="text_create_shortcut">建立捷徑於桌面</string>
+    <string name="cancel">取消</string>
+    <string name="toast_get_admin">請點選\"啟用\"按鈕取得裝置權限.</string>
+    <string name="text_uninstall">移除軟體</string>
+    <string name="service_name"></string>
+    <string name="alert_uninstall">"您確定真的要移除 "</string>
 </resources>
